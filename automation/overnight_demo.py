@@ -7,6 +7,7 @@ or claim to be an autonomous research model.
 
 from __future__ import annotations
 
+import ctypes
 from datetime import datetime
 import math
 from pathlib import Path
@@ -131,6 +132,15 @@ class FocusLostError(RuntimeError):
     """Raised when the new Notepad task window cannot be restored safely."""
 
 
+class ContentIntegrityError(RuntimeError):
+    """Raised when Notepad's saved text differs from the intended task text."""
+
+
+def _caps_lock_is_on() -> bool:
+    """Read the Caps Lock toggle state from the Windows keyboard API."""
+    return bool(ctypes.windll.user32.GetKeyState(0x14) & 1)
+
+
 def _load_task(task: dict) -> str:
     path = Path(task["source"])
     if not path.is_file():
@@ -198,9 +208,12 @@ def run_overnight_demo(
         "typed_words": 0,
         "review_checkpoints": 0,
         "review_flags": 0,
+        "integrity_checks": 0,
+        "integrity_failures": 0,
     }
     run_start = time.monotonic()
     deadline = run_start + max_runtime_hours * 60 * 60
+    caps_lock_was_on = _caps_lock_is_on()
     active_seconds = 0.0
     next_review_seconds = checkpoint_minutes * 60
     last_save_words = 0
@@ -251,8 +264,26 @@ def run_overnight_demo(
         active = pyautogui.getActiveWindow()
         return bool(active and current_output and current_output.stem.lower() in (active.title or "").lower())
 
+    def normalize_caps_lock() -> None:
+        if _caps_lock_is_on():
+            pyautogui.press("capslock")
+            metrics["keyboard_interactions"] += 1
+            if _caps_lock_is_on():
+                raise RuntimeError("Caps Lock could not be turned off for reliable text entry.")
+            log_event("Temporarily turned off Caps Lock for case-accurate typing.", print_line=True)
+
+    def restore_caps_lock() -> None:
+        if _caps_lock_is_on() != caps_lock_was_on:
+            pyautogui.press("capslock")
+            metrics["keyboard_interactions"] += 1
+            if _caps_lock_is_on() != caps_lock_was_on:
+                logger.error("Could not restore the original Caps Lock state.")
+            else:
+                log_event("Restored the original Caps Lock state.")
+
     def ensure_focus() -> None:
         if foreground_matches():
+            normalize_caps_lock()
             return
         for attempt in range(1, 4):
             try:
@@ -265,6 +296,7 @@ def run_overnight_demo(
                 pyautogui.hotkey("ctrl", "end")
                 metrics["keyboard_interactions"] += 2
                 log_event(f"Automatically restored the task window (attempt {attempt}).", print_line=True)
+                normalize_caps_lock()
                 return
         raise FocusLostError("The task's Notepad window could not be restored after three attempts.")
 
@@ -275,6 +307,22 @@ def run_overnight_demo(
         metrics["saves"] += 1
         time.sleep(0.15)
         log_event(f"Saved draft ({reason}).", print_line=True)
+        expected = current_text[:committed_chars]
+        actual = current_output.read_text(encoding="ascii")
+        expected = expected.replace("\r\n", "\n").replace("\r", "\n")
+        actual = actual.replace("\r\n", "\n").replace("\r", "\n")
+        metrics["integrity_checks"] += 1
+        if actual != expected:
+            metrics["integrity_failures"] += 1
+            log_event(
+                f"Content integrity mismatch: saved {len(actual):,} characters; "
+                f"expected {len(expected):,}.",
+                print_line=True,
+            )
+            raise ContentIntegrityError(
+                "Saved Notepad content differs from the intended source; the run stopped "
+                "and will preserve a recovery copy."
+            )
 
     def run_rule_review(*, final: bool) -> list[str]:
         ensure_focus()
@@ -390,6 +438,7 @@ def run_overnight_demo(
     current_task_spec = TASKS[0]
     task_text = ""
     try:
+        normalize_caps_lock()
         for task_number, (task, task_text) in enumerate(loaded_tasks, start=1):
             if time.monotonic() >= deadline:
                 stop_reason = "wall-clock limit reached before the next task"
@@ -482,6 +531,7 @@ def run_overnight_demo(
 
         if stop_reason == "queue completed":
             log_event("Completed the full writing and review task queue.", print_line=True)
+        restore_caps_lock()
         with activity_file.open("a", encoding="utf-8", newline="\n") as log:
             log.write("\n## Final summary\n\n")
             log.write(f"- Result: {stop_reason}\n")
@@ -509,6 +559,10 @@ def run_overnight_demo(
         print(f"The overnight run stopped: {error}")
         logger.exception("Bounded overnight task queue failed.")
 
+    try:
+        restore_caps_lock()
+    except Exception:
+        logger.exception("Could not restore the original Caps Lock state after stopping.")
     if current_output and current_text:
         recovery = current_output.with_name(f"{current_output.stem}_recovery.txt")
         recovery.write_text(current_text[:committed_chars], encoding="ascii", newline="\n")
