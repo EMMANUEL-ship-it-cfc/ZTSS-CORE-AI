@@ -7,7 +7,6 @@ or claim to be an autonomous research model.
 
 from __future__ import annotations
 
-import ctypes
 from datetime import datetime
 import math
 from pathlib import Path
@@ -136,11 +135,6 @@ class ContentIntegrityError(RuntimeError):
     """Raised when Notepad's saved text differs from the intended task text."""
 
 
-def _caps_lock_is_on() -> bool:
-    """Read the Caps Lock toggle state from the Windows keyboard API."""
-    return bool(ctypes.windll.user32.GetKeyState(0x14) & 1)
-
-
 def _load_task(task: dict) -> str:
     path = Path(task["source"])
     if not path.is_file():
@@ -183,6 +177,7 @@ def run_overnight_demo(
         print(f"  {index}. {task['title']} ({len(text.split()):,} words)")
     print(f"Run folder: {run_directory}")
     print("Keep the laptop awake and unlocked; the run may restore its own Notepad window.")
+    print("A short case check will be typed and cleared in the first new Notepad file.")
     print("Move the pointer to the upper-left corner for the PyAutoGUI stop failsafe.")
 
     try:
@@ -214,7 +209,6 @@ def run_overnight_demo(
     }
     run_start = time.monotonic()
     deadline = run_start + max_runtime_hours * 60 * 60
-    caps_lock_was_on = _caps_lock_is_on()
     active_seconds = 0.0
     next_review_seconds = checkpoint_minutes * 60
     last_save_words = 0
@@ -228,6 +222,7 @@ def run_overnight_demo(
     last_status_print = run_start
     stop_reason = "queue completed"
     completed_tasks: list[str] = []
+    caps_lock_toggled_by_agent = False
 
     pyautogui.FAILSAFE = True
     pyautogui.PAUSE = 0.01
@@ -265,26 +260,8 @@ def run_overnight_demo(
         active = pyautogui.getActiveWindow()
         return bool(active and current_output and current_output.stem.lower() in (active.title or "").lower())
 
-    def normalize_caps_lock() -> None:
-        if _caps_lock_is_on():
-            pyautogui.press("capslock")
-            metrics["keyboard_interactions"] += 1
-            if _caps_lock_is_on():
-                raise RuntimeError("Caps Lock could not be turned off for reliable text entry.")
-            log_event("Temporarily turned off Caps Lock for case-accurate typing.", print_line=True)
-
-    def restore_caps_lock() -> None:
-        if _caps_lock_is_on() != caps_lock_was_on:
-            pyautogui.press("capslock")
-            metrics["keyboard_interactions"] += 1
-            if _caps_lock_is_on() != caps_lock_was_on:
-                logger.error("Could not restore the original Caps Lock state.")
-            else:
-                log_event("Restored the original Caps Lock state.")
-
     def ensure_focus() -> None:
         if foreground_matches():
-            normalize_caps_lock()
             return
         for attempt in range(1, 4):
             try:
@@ -297,9 +274,67 @@ def run_overnight_demo(
                 pyautogui.hotkey("ctrl", "end")
                 metrics["keyboard_interactions"] += 2
                 log_event(f"Automatically restored the task window (attempt {attempt}).", print_line=True)
-                normalize_caps_lock()
                 return
         raise FocusLostError("The task's Notepad window could not be restored after three attempts.")
+
+    def calibrate_notepad_input() -> None:
+        nonlocal caps_lock_toggled_by_agent
+        probe = "AaZzCaseCheck123!"
+
+        def clear_probe() -> None:
+            ensure_focus()
+            pyautogui.hotkey("ctrl", "a")
+            pyautogui.press("backspace")
+            metrics["keyboard_interactions"] += 3
+            metrics["editing_actions"] += 1
+            pyautogui.hotkey("ctrl", "s")
+            metrics["keyboard_interactions"] += 2
+            metrics["saves"] += 1
+            time.sleep(0.15)
+
+        def type_and_read_probe() -> str:
+            ensure_focus()
+            pyautogui.hotkey("ctrl", "home")
+            pyautogui.write(probe, interval=typing_interval)
+            metrics["keyboard_interactions"] += len(probe) + 2
+            metrics["editing_actions"] += 1
+            pyautogui.hotkey("ctrl", "s")
+            metrics["keyboard_interactions"] += 2
+            metrics["saves"] += 1
+            time.sleep(0.15)
+            metrics["integrity_checks"] += 1
+            return current_output.read_text(encoding="ascii")
+
+        actual = type_and_read_probe()
+        if actual != probe:
+            if actual.casefold() == probe.casefold():
+                clear_probe()
+                ensure_focus()
+                pyautogui.press("capslock")
+                metrics["keyboard_interactions"] += 1
+                caps_lock_toggled_by_agent = True
+                log_event("Input probe detected case inversion; toggled Caps Lock and retrying.", print_line=True)
+                actual = type_and_read_probe()
+            if actual != probe:
+                metrics["integrity_failures"] += 1
+                clear_probe()
+                raise ContentIntegrityError(
+                    "Notepad keyboard calibration failed; the task text was not started."
+                )
+
+        clear_probe()
+        if current_output.read_text(encoding="ascii") != "":
+            metrics["integrity_failures"] += 1
+            raise ContentIntegrityError("Could not clear the Notepad input calibration text.")
+        log_event("Passed case-accurate Notepad input calibration; probe text was cleared.", print_line=True)
+
+    def restore_caps_lock_if_toggled() -> None:
+        nonlocal caps_lock_toggled_by_agent
+        if caps_lock_toggled_by_agent:
+            pyautogui.press("capslock")
+            metrics["keyboard_interactions"] += 1
+            caps_lock_toggled_by_agent = False
+            log_event("Restored Caps Lock after the input calibration change.")
 
     def save_current(reason: str) -> None:
         ensure_focus()
@@ -444,12 +479,13 @@ def run_overnight_demo(
     current_task_spec = TASKS[0]
     task_text = ""
     try:
-        normalize_caps_lock()
         for task_number, (task, task_text) in enumerate(loaded_tasks, start=1):
             if time.monotonic() >= deadline:
                 stop_reason = "wall-clock limit reached before the next task"
                 break
             open_task(task)
+            if task_number == 1:
+                calibrate_notepad_input()
             print(f"Task {task_number}/{len(loaded_tasks)}: {task['title']}")
             sys.stdout.flush()
             log_event(f"Started task {task_number} of {len(loaded_tasks)}.", print_line=True)
@@ -538,7 +574,7 @@ def run_overnight_demo(
 
         if stop_reason == "queue completed":
             log_event("Completed the full writing and review task queue.", print_line=True)
-        restore_caps_lock()
+        restore_caps_lock_if_toggled()
         with activity_file.open("a", encoding="utf-8", newline="\n") as log:
             log.write("\n## Final summary\n\n")
             log.write(f"- Result: {stop_reason}\n")
@@ -567,9 +603,9 @@ def run_overnight_demo(
         logger.exception("Bounded overnight task queue failed.")
 
     try:
-        restore_caps_lock()
+        restore_caps_lock_if_toggled()
     except Exception:
-        logger.exception("Could not restore the original Caps Lock state after stopping.")
+        logger.exception("Could not restore Caps Lock after input calibration.")
     if current_output and current_text:
         recovery = current_output.with_name(f"{current_output.stem}_recovery.txt")
         recovery.write_text(current_text[:committed_chars], encoding="ascii", newline="\n")
