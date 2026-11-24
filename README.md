@@ -16,6 +16,14 @@ The default target is at least 5,000 words, approximately 20 double-spaced acade
 
 The paper file and a separate action log are created for each run. The log records section transitions, typed chunks, saves, elapsed time, and keyboard and mouse interaction counts. Existing Notepad tabs are not selected or closed. Keep the VS Code terminal available for checkpoint prompts; move the mouse to the upper-left corner to trigger PyAutoGUI's failsafe, or use Ctrl+C while the terminal has focus.
 
+## Bounded overnight writing and review demonstration
+
+`--overnight-demo` runs a local queue of prepared, related documents: the research paper, a teacher implementation guide, a school pilot protocol, a leadership brief with classroom tools, and a scenario and revision workbook. It opens a new Notepad file for each task inside a unique run folder. It does not use a local AI model, access the web, or inspect private files.
+
+The default maximum is four hours of wall-clock time, with an automatic review checkpoint after every 60 minutes of active typing. The queue contains about 13,600 prepared words and uses a 0.15-second per-character typing interval by default, so it is sized to run close to the four-hour cap; actual completion time can vary. The single-paper demo defaults to 0.11 seconds per character. Each overnight checkpoint saves the current draft, checks its saved text for configured headings, selected known typing artifacts, duplicate long paragraphs, and required simulation disclosure, records findings in a review report, navigates through the open document, and continues without waiting for terminal input. These checks do not verify grammar, citations, factual claims, or research sources. The run stops if the queue finishes before the time limit; at the deadline it saves and reports any partial task. It does not extend activity with idle timers.
+
+The machine must remain plugged in, awake, and unlocked, and the run may restore its own Notepad window if focus changes. Focus recovery is limited to three attempts; if those fail, the run stops and writes a recovery copy. Move the pointer to the upper-left corner for the PyAutoGUI stop failsafe. The prepared task materials are a desktop automation workload, not original AI research or authorship.
+
 ## Set up
 
 From this project folder, create and activate a virtual environment, then install the listed dependency:
@@ -34,9 +42,10 @@ If the `py` launcher is unavailable, use `python` to create the virtual environm
 python main.py
 python main.py --demo
 python main.py --paper-demo
+python main.py --overnight-demo --run-hours 4 --checkpoint-minutes 60
 ```
 
-The first command prints help without controlling the desktop. `--demo` asks for confirmation before starting the short demo. `--paper-demo` asks for confirmation, opens a new Notepad file, and asks for a second `START` confirmation before typing. Activity is recorded locally in `logs/ztss_core.log` and in a per-run Markdown log under `demo_output/`.
+The first command prints help without controlling the desktop. `--demo` asks for confirmation before starting the short demo. `--paper-demo` asks for confirmation, opens a new Notepad file, and asks for a second `START` confirmation before typing. `--overnight-demo` asks once for `YES`, then starts the bounded task queue with automatic reviews. Use `--typing-interval` to override the default per-mode typing speed. Activity is recorded locally in `logs/ztss_core.log` and in per-run Markdown logs under `demo_output/`.
 
 ## Project layout
 

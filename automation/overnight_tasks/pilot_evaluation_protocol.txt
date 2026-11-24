@@ -1,0 +1,93 @@
+ZTSS CORE Demonstration Task: School Pilot Evaluation Protocol
+
+Prepared planning material for a desktop automation endurance demonstration. This document describes a possible future evaluation. It is not an approved study, a report of conducted research, or a request to collect student data. No school, teacher, class, or student is represented as having participated.
+
+Protocol purpose
+
+This protocol provides a cautious starting point for evaluating a short retrieval-practice routine in secondary science. Its purpose is to separate the educational activity from the evidence about that activity. A teacher can use brief low-stakes prompts as part of ordinary instruction, but a claim about effectiveness requires a suitable design, defined outcomes, ethical safeguards, and honest reporting.
+
+The protocol is intentionally conditional. A school may decide that a formal research study is not appropriate. A small feasibility pilot can instead ask whether lessons fit the timetable, whether instructions are understandable, and whether the feedback routine is acceptable. Feasibility findings must not be described as proof of a learning effect.
+
+The sample numbers, comparison options, and instruments in this protocol are illustrative choices only. They should be replaced after discussion with school leaders, teachers, families, learners, and the appropriate review body. The protocol does not authorize access to school records or private learner information.
+
+Research questions
+
+The primary feasibility question is whether teachers can deliver the planned low-stakes retrieval activities as intended within the normal science unit. Feasibility indicators may include the number of planned lessons delivered, approximate time used, teacher preparation burden, and whether feedback can be completed within the lesson.
+
+A secondary acceptability question is whether learners and teachers find the routine understandable, respectful, and manageable. A brief confidential check-in can ask whether prompts were clear, whether feedback helped, and whether a learner had an access or stress concern. A response of "not sure" should remain available.
+
+If review approval, resources, and sample size permit, a later effectiveness question could compare delayed retention and explanation outcomes under retrieval-supported review with outcomes under the school's usual review approach. This question requires a pre-specified design and adequate analysis. The protocol must not imply that a convenience sample or a before-and-after comparison establishes causation.
+
+Design and setting
+
+The first stage should be a feasibility pilot within one defined unit. A descriptive design can record delivery, time, usability, and learner experience without claiming causal impact. If a comparison is feasible and approved, classes may be assigned to conditions using a method selected before the unit begins. When whole classes receive different methods, the analysis should account for students nested within classes.
+
+The school setting should be described at a level that protects identity. State the grade range, subject area, unit length, and broad timetable context. Do not publish a school name or details that would make a small class identifiable without explicit authorization. The site should be selected for practical readiness and not because results are expected to be favorable.
+
+The unit of allocation should match how the instruction is delivered. Assigning individual learners within one class can lead to spillover when students share materials. Class-level assignment may reduce that problem but usually requires more classes and a cluster-aware analysis. If only one class is available, report the work as a classroom feasibility exercise and avoid a causal comparison.
+
+Before recruitment, define the intervention, comparison, outcomes, time points, exclusion criteria, and analysis. Document the plan in a dated protocol. If an external ethics or research committee is required, obtain approval before recruitment or data collection. If the school cannot support required safeguards, do not proceed with research data collection.
+
+Participants and recruitment
+
+Participants would be learners enrolled in the selected secondary science classes and the teachers responsible for the unit. Eligibility should be stated in advance and should not depend on expected performance. A school leader or teacher should not pressure a learner or family to participate in research. If the activity is part of ordinary teaching, the distinction between instruction and optional data collection must be clear.
+
+The school should provide families with understandable information about the purpose, activities, data collected, confidentiality limits, and contact person. Obtain permission and learner assent where required by the applicable rules. A learner's decision not to contribute research data must not reduce access to instruction, feedback, or other school support.
+
+Keep recruitment separate from grading. Teachers should not use consent responses to change marks or treatment. If a teacher is also a researcher, disclose that role and provide a contact outside the grading relationship when possible. Explain how a participant can ask questions or withdraw, subject to the approved data-handling plan.
+
+Do not recruit more learners than the approved design requires. A sample-size rationale should consider the primary outcome, expected clustering, missing data, and feasibility. If the goal is only to test logistics, label the sample as a feasibility sample and do not present it as statistically powered for an effectiveness claim.
+
+Intervention and comparison
+
+The intervention should be described so another teacher could understand what was planned. Specify when retrieval occurs, how long it lasts, which knowledge is targeted, what materials are used, how feedback is given, and how learners may respond. The routine should follow instruction and should not disclose the answer before an attempt.
+
+Prompts may use short recall, written explanation, a diagram from memory, or application to a new example. The sequence should revisit key ideas after an interval and include corrective feedback. A prompt that merely asks students to reread a visible answer is not equivalent to retrieval practice. The lesson plan should state what students are expected to do and what the teacher will do after responses.
+
+The comparison condition should be described fairly. "Usual review" must be specified in enough detail to interpret the difference between conditions, such as the regular teacher-led recap or study activity. Do not intentionally withhold required instruction or support from a comparison class. Both conditions should receive the planned curriculum and appropriate accommodations.
+
+Track implementation without turning normal teaching into surveillance. A teacher can record whether an activity occurred, approximate minutes, prompt format, feedback, and a brief reason for any change. A researcher should not record private student conversations or collect additional personal details simply because a form makes that convenient.
+
+Measures and timing
+
+Choose one primary learning outcome before collecting data. For a unit on ecosystems, a delayed assessment could combine a small number of recall prompts with explanation or transfer items. The items should align with what was taught while avoiding simple copying from the practice prompt. An immediate quiz can provide useful instructional information but should not substitute for a delayed outcome when the question concerns retention.
+
+Create a scoring guide before results are examined. Define what counts as an accurate explanation, an incomplete explanation, or a misconception. If open responses are scored, remove names where practical and ask a second scorer to review a sample. Record how disagreements are resolved. Do not score spelling or grammar when those skills are outside the learning objective.
+
+Feasibility measures can include lessons delivered as planned, time required, teacher preparation, and missing forms. Acceptability measures should be brief, accessible, and voluntary where required. Questions should not imply that students are expected to praise the intervention. Provide an option to skip a question or express concern.
+
+Collect baseline information only when it is needed to interpret the outcome and approved. Possible information could include a short pre-unit knowledge measure or class assignment condition. Avoid collecting names, family details, disability records, or unrelated grades unless the approved protocol establishes a necessary basis and secure procedure.
+
+Set a schedule before the unit begins: baseline measure, lesson sequence, immediate check if needed, delayed assessment, and teacher reflection. Record dates and any schedule changes. If a delayed assessment is missed or a class has an interruption, document it rather than silently changing the measurement window.
+
+Analysis plan
+
+For a feasibility stage, summarize delivery and time descriptively. Report the number of planned and completed activities, approximate activity duration, and the nature of any deviations. Summarize learner and teacher feedback without exposing small identifiable groups. The purpose is to decide whether the design can be improved, not to infer a causal learning effect.
+
+For a comparison study, specify the primary contrast and scoring before outcomes are examined. If classes are assigned as clusters, account for class-level variation. Use a method that fits the number of classes and the data structure. A simple average that treats every student as fully independent may overstate precision when students share a teacher and classroom.
+
+Report the number of classes, number of learners invited, number with approved data, missing outcomes, and reasons for missingness when known. Show group distributions as well as averages where possible. Confidence intervals or other uncertainty summaries should accompany estimates when the design supports them. Do not select only the most favorable outcome after seeing the results.
+
+Subgroup analysis should be limited and pre-specified. Small subgroup results may be unstable and could identify learners. Do not make a claim about disability, language, gender, or prior attainment from very small numbers. If a subgroup analysis is exploratory, label it exploratory and explain the uncertainty.
+
+If sample size or cluster count is too small for reliable effectiveness analysis, report descriptive feasibility findings and say that the study cannot establish a general effect. A non-significant estimate does not prove that the approaches are equivalent. A positive estimate does not prove a causal benefit if allocation, missingness, or implementation was compromised.
+
+Ethics and data protection
+
+Obtain all required school, institutional, and community approvals before collecting research data. Ensure that instruction is not delayed while approvals are pending. Provide clear information, appropriate permission and assent, a withdrawal procedure, and a contact for concerns. The exact requirements depend on the governing institution and jurisdiction.
+
+Minimize data. Use study codes rather than names in working files. Keep any code key separate and access-limited. Store records only in approved locations, define a retention and deletion schedule, and describe who can view the data. Do not send learner records to a personal account, public service, or unapproved cloud tool.
+
+An independent person should review procedures that create a power imbalance. Learners should be able to decline research participation without a penalty. Teachers should continue to provide normal instruction and accommodations. A practice response should not become a public label or an unapproved input to high-stakes decisions.
+
+Pause the pilot if participation appears coerced, a privacy incident occurs, instructions are misleading, or the routine causes an unanticipated harm. Follow the institution's reporting process. Document the event, take appropriate corrective action, and seek review before restarting if approval conditions require it.
+
+Reporting and decision rules
+
+Before the unit begins, define a decision rule for continuation. The rule can include whether teachers could deliver the routine, whether time demands were manageable, whether learners understood the purpose, whether accommodations worked, and whether any distress or privacy issue occurred. Do not base the decision only on a test-score average.
+
+At the end, prepare a report that distinguishes the protocol, changes made, activities actually delivered, observed data, missing data, and interpretation. Use the terms "planned," "observed," and "simulated" precisely. If values are hypothetical, label them in the table, text, and caption. Never merge fictional demonstration values with real school outcomes.
+
+A result can support one of three decisions. Continue the routine if it is feasible and acceptable and the evidence justifies the next step. Adapt it if delivery or access needs improvement. Stop if the activity creates unacceptable burden or risk. State uncertainty and avoid promises that the intervention will improve every learner's outcome.
+
+This protocol is a prepared planning document for a desktop demonstration. It has not received ethics approval and does not authorize recruitment, classroom observation, or access to student records. Any future study requires a separate review of its actual design, setting, measures, and safeguards.

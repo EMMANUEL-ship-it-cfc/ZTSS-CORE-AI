@@ -1,0 +1,205 @@
+ZTSS CORE Demonstration Task: School Leadership Brief and Classroom Tools
+
+Prepared local material for a desktop automation endurance demonstration. This brief offers discussion prompts and blank planning templates. It is not a school decision, a validated instrument, or evidence that retrieval practice has been evaluated at a particular site.
+
+Decision brief
+
+The decision for a school is whether a small, low-stakes retrieval routine is worth trying within a taught science unit, and what safeguards would make a pilot responsible. The available literature supports considering retrieval as one learning activity. It does not establish that a particular schedule will work in every classroom or that more quizzes are always better.
+
+A reasonable first step is a limited teacher-led trial that follows existing instruction, uses brief prompts, gives corrective feedback, and includes an access check. The school should decide in advance what information it needs to learn from the trial. If the goal is only to improve lesson planning, the team can use normal teaching reflection. If the goal is to make a research claim, obtain the required review and permissions before collecting research data.
+
+The decision should consider learning goals, lesson time, teacher workload, student experience, accommodations, data needs, and the school's ability to provide accurate feedback. It should not be based on a promise of a certain score increase. A result that shows implementation was difficult or the routine was not acceptable is useful information and may justify adapting or stopping.
+
+What the evidence can support
+
+Retrieval practice means that a learner attempts to recall information from memory. Research reviews and classroom studies describe benefits for later retention under some conditions. The size and consistency of an effect vary across topic, question format, delay, feedback, learner preparation, and later assessment. A broad average does not predict an outcome for a specific class.
+
+Several practical implications are reasonable to discuss: teach the content before asking for retrieval; use low-stakes prompts; space practice across lessons; provide correction; align the prompt with the learning objective; and monitor access and student experience. These are design choices, not guarantees. Teachers should preserve explanation, discussion, hands-on work, and practice.
+
+Evidence limitations matter. A laboratory task is not identical to a busy classroom. A review may combine contexts, ages, outcomes, and methods. A local plan should not claim that a study proves a local effect. The school's context, curriculum, language, timetable, class size, and learner support may alter whether a routine is useful or feasible.
+
+What a pilot needs
+
+The purpose must be clear. A feasibility pilot asks whether a routine can be delivered and whether it is understandable and acceptable. An effectiveness study asks whether a defined outcome differs between conditions and needs a stronger design, adequate sample, suitable analysis, and research oversight. These goals should not be mixed after the activity has started.
+
+Teachers need usable prompts and model answers before lessons begin. A prompt that is ambiguous or poorly aligned can produce confusing responses. The team should agree on what students are expected to retrieve, how feedback will be given, and what will happen when many students show the same misconception.
+
+Students need to understand why they are doing the activity. The routine should not be presented as a hidden grading exercise. Students should not be publicly ranked. If information is gathered for research, explain consent or assent, privacy, withdrawal, and who may access records according to the approved process.
+
+Teacher planning checklist
+
+Before the first lesson, the teacher can use the checklist below. Mark "yes," "no," or "not applicable," and write a short note for any item that needs action.
+
+1. The learning objective identifies what students should know or explain.
+
+2. The target concept has already been taught using an appropriate explanation or supported activity.
+
+3. Each prompt requires learners to attempt recall before seeing an answer.
+
+4. A concise model answer or answer key is ready.
+
+5. The feedback step gives learners a chance to correct or extend an answer.
+
+6. The activity is low stakes and its purpose will be explained.
+
+7. The planned response format is accessible to the students who will use it.
+
+8. Required accommodations, extra time, assistive tools, or alternative response modes are arranged.
+
+9. The activity fits the lesson without displacing essential teaching or safety instructions.
+
+10. Any information to be recorded is necessary, approved, and stored in the correct location.
+
+11. A teacher can explain how the prompt connects to later learning or assessment.
+
+12. A plan exists for responding if students appear confused, distressed, or unable to access the prompt.
+
+Lesson record form
+
+Date and class code: ______________________________
+
+Unit and learning objective: ______________________________
+
+Target concept or relationship: ______________________________
+
+Prompt format: recall / explanation / diagram / application / other
+
+Prompt used: ____________________________________________________________
+
+Time used for the activity: __________ minutes
+
+Was the concept taught before this prompt? yes / no / not sure
+
+Feedback provided: model answer / explanation / peer comparison / revision / other
+
+Were any changes made to the planned activity? ______________________________
+
+If changes were made, why? __________________________________________________
+
+Did the activity displace planned instruction or learner questions? yes / no / not sure
+
+Access or usability observation, without learner names: _______________________
+
+Next teaching step: reteach / revisit later / continue / adapt / other
+
+This form should capture only information needed for planning. Do not write student names or sensitive details on an unapproved form. If research data are being collected, use only the approved instrument and storage procedure.
+
+Student experience check-in
+
+The following short check-in can be adapted for a class reflection. It is not a validated survey. Tell learners whether it is anonymous, how responses will be used, and whether participation is optional. Do not use it to grade students.
+
+The instructions were clear: yes / partly / no / prefer not to say.
+
+The activity helped me notice what I remembered: yes / partly / no / not sure.
+
+The feedback helped me improve or correct an answer: yes / partly / no / not sure.
+
+I had enough time to take part: yes / partly / no / not sure.
+
+One part that worked well for me was: ________________________________________
+
+One part that should change is: ______________________________________________
+
+Was any part difficult to access or uncomfortable? ______________________________
+
+Learners should be able to skip a question. A teacher should not ask the class to name classmates who struggled. If a response signals distress or a safety concern, follow the school's established support procedure.
+
+Prompt planning card
+
+Unit concept: __________________________
+
+What prior instruction supports this prompt? _________________________________
+
+Recall prompt: _____________________________________________________________
+
+Expected key idea: _________________________________________________________
+
+Common misconception to watch for: _________________________________________
+
+Feedback or correction: ____________________________________________________
+
+Later revisit date: ______________________
+
+Possible transfer example: __________________________________________________
+
+Access options: ____________________________________________________________
+
+The prompt writer should check that the task does not show the answer before the attempt. The example should be familiar enough for learners to understand the context but different enough to require attention to the underlying concept. If several answers could be correct, state how they will be interpreted.
+
+Example planning card for ecosystems
+
+Unit concept: energy flow through a food web.
+
+Prior instruction: learners have studied producers, consumers, and arrows showing a feeding relationship.
+
+Recall prompt: Draw one food chain from memory and label the direction of energy transfer.
+
+Expected key idea: arrows show the direction in which energy moves, from the organism being eaten toward the organism that eats it.
+
+Common misconception: arrows point toward the organism that provides energy rather than the receiver.
+
+Feedback: compare with a model, explain one arrow, and revise if needed.
+
+Later revisit: ask learners to explain how a change in one population might affect another organism in a simple food web.
+
+Access options: provide large print, allow an oral explanation with a diagram, or give additional time where required.
+
+Review meeting guide
+
+A short review meeting can begin with the intended objective and the planned sequence. Ask what was delivered, what changed, and how much lesson time the routine used. Separate what teachers observed from what they infer. Keep the tone focused on design and learning rather than judging individual teachers or learners.
+
+Review the prompt quality. Was it aligned with instruction? Did the wording invite retrieval? Did students need to explain a relationship or only recall a label? Was the model answer accurate and understandable? If the prompt caused confusion, rewrite it before repeating it.
+
+Review feedback. Did learners compare their response with a sound answer? Could they correct a misconception? Did the teacher need to reteach a concept? Was feedback private and respectful? If feedback could not be completed within the lesson, consider reducing the number of prompts.
+
+Review access and student experience. Were any students unable to use the format? Did the activity create avoidable pressure? Were accommodations available? Did students understand that practice was low stakes? If a concern emerges, identify a support action without disclosing student details to an unnecessary audience.
+
+Review feasibility. How much preparation did the teacher need? Did the routine displace a laboratory task, discussion, or explanation? Were materials available? Could the activity fit into a normal lesson without increasing workload beyond the team's capacity? If not, redesign or stop.
+
+Decision options
+
+Continue the routine in a limited way when the activity is aligned with the objective, feasible, accessible, and acceptable to the class. Continue does not mean scale across the school or claim a causal effect. Keep monitoring whether the conditions that made it workable remain in place.
+
+Adapt the routine when a prompt is unclear, feedback is too demanding, the interval does not fit the unit, or learners need another response format. Change one or two features at a time and record the change. If the purpose is research, obtain any required approval before changing the protocol.
+
+Pause or stop when the routine displaces essential instruction, increases distress, cannot provide accurate feedback, or creates an unresolved privacy or fairness issue. The school should communicate the decision and reason to the people affected. Stopping is not a failure when evidence or safeguarding concerns warrant it.
+
+Defer a research decision when the school has not secured necessary review, permission, staffing, secure storage, or a clear analysis plan. Teachers may still use ordinary formative instruction according to policy, but should not collect or repurpose private data for a study without appropriate authorization.
+
+Suggested decision memo
+
+Decision date: __________________________
+
+Unit or year group: ______________________
+
+Purpose: instruction / feasibility / approved research
+
+Decision: continue / adapt / pause / stop / defer
+
+Evidence reviewed: ________________________________________________________
+
+Student access and experience concerns: ____________________________________
+
+Teacher time and resources: ________________________________________________
+
+Changes required before the next step: ______________________________________
+
+Approvals or permissions needed: ___________________________________________
+
+Uncertainty that remains: __________________________________________________
+
+Person responsible for the next review: _____________________________________
+
+The memo should summarize evidence at the appropriate level and avoid identifying individual learners. A classroom reflection, a feasibility record, and an approved research result are different sources of evidence. The memo should state which type informed the decision.
+
+Communication to families and learners
+
+Communication should be plain and specific. Explain what the classroom routine involves, why it is being used, whether practice answers affect grades, and whom to contact with a concern. If a study is planned, distinguish the educational activity from optional research data collection. Describe permission, privacy, and withdrawal using the language required by the approved protocol.
+
+Avoid promising a score gain or describing the activity as proven for every learner. Say that teachers are exploring whether the approach is useful in this unit and that feedback will inform the next step. Share a summary that protects privacy and includes limitations. Do not publish small-group results that could reveal a learner's identity.
+
+Record and data handling reminder
+
+Before collecting or saving any student information, identify the approved location, access list, retention period, and deletion process. Do not store names in an open text file or personal automation folder. Keep research files separate from routine lesson notes and grading records. If the school has not approved a data process, do not collect research data.
+
+The templates in this brief are blank planning aids for the desktop demonstration. They contain no real learner information and do not authorize a school pilot. A school should adapt them to local curriculum, accessibility needs, safeguarding rules, and research governance before use.

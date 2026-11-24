@@ -1,0 +1,103 @@
+ZTSS CORE Demonstration Task: Teacher Implementation Guide
+
+Prepared local task material for a desktop automation endurance demonstration. This guide is a planning aid, not a curriculum mandate, a substitute for local professional judgment, or evidence that an intervention has been tested in a particular school.
+
+Purpose and boundaries
+
+This guide translates the paper's cautious discussion of retrieval practice into a usable planning sequence for a secondary science unit. Retrieval practice means asking learners to bring previously taught information to mind before they consult notes or an answer. The goal is learning and diagnosis, not ranking students. A prompt should be followed by feedback or an opportunity to check an accurate explanation.
+
+The guide does not assume that every quiz improves learning. A task can be too difficult, too trivial, poorly timed, inaccessible, or disconnected from the lesson objective. Teachers should use retrieval as one small part of a balanced lesson that also includes direct teaching, explanation, investigation, discussion, practice, and questions. A local pilot should be short, transparent, and reversible.
+
+The examples use a hypothetical secondary science unit on ecosystems. The same sequence can be adapted to energy, matter, forces, cells, or another taught topic. The example questions are prompts for planning; they do not represent a validated assessment instrument. Teachers should align wording and level with their curriculum, learners' prior instruction, and school policy.
+
+Core implementation principles
+
+Teach before retrieval. Students need an initial explanation, demonstration, text, model, or supported practice before being asked to recall a concept. A prompt given before instruction may measure prior knowledge or encourage guessing. It should not be described as practice on material students have not encountered.
+
+Keep practice low stakes. Explain that the activity is a chance to bring ideas to mind and improve them. Avoid public rankings, surprise marks, and using a single practice score to label a learner. If a score is collected, define its limited purpose and how it will be protected.
+
+Space ideas across lessons. Revisit important concepts after an interval. The intervals may be planned within the unit, but the exact schedule should be adjusted to class time and learner response. Repeating the identical item is not the only way to revisit a concept; teachers can change the example while keeping the underlying idea in view.
+
+Give corrective feedback. Learners should be able to compare their response with a sound explanation, identify what was missing, and improve their thinking. Feedback can be brief. It should correct errors without humiliating students or treating uncertainty as misconduct.
+
+Match the prompt to the objective. If the objective is to explain how energy moves through an ecosystem, a prompt asking only for a vocabulary definition is incomplete. A definition question can be useful for one purpose, but it should not stand in for a causal explanation or transfer task.
+
+Protect access and time. Provide readable instructions, sufficient response time, and appropriate accommodations. Plan the activity so it does not crowd out essential instruction, laboratory safety, discussion, or student questions. Record the time it takes and revise the routine when the burden is too high.
+
+Before the unit begins
+
+Select a small number of important ideas. A short unit should not turn into a daily test of every detail. Choose concepts that students need to retain and use, such as food webs, energy transfer, population change, and the difference between a correlation and a cause. Write the learning objective in observable language.
+
+Check that each target has been taught. For every proposed prompt, note the lesson or resource where learners first met the relevant concept. If an idea is not yet taught, move the prompt later or label it as a baseline question rather than a retrieval activity.
+
+Create a prompt map. For each target, write one brief recall prompt, one explanation prompt, and one application prompt. A prompt map prevents the routine from becoming a repeated list of isolated terms. It also helps teachers see whether the activity covers the unit's intended learning outcomes.
+
+Prepare accurate answers. Write a concise answer key or model explanation before using a question. Include the most important reasoning step and one common misconception. If a question has more than one defensible answer, document the acceptable range and the evidence that supports it.
+
+Plan an access check. Consider reading load, font size, language complexity, assistive technology, extra time, and alternative response modes. Ask whether a response mode is essential to the learning objective. If spelling is not an objective, do not let spelling errors obscure a correct scientific explanation.
+
+Tell learners what will happen. Explain why they will be asked to recall, how answers will be used, whether any record will be kept, and how feedback will work. Make clear that practice is not a public ranking. Invite questions about the routine before the first activity.
+
+The six-week sequence
+
+Week 1: Establish the routine after initial instruction. Use one low-stakes prompt at the end of a lesson. Let students answer privately before showing a model response. Ask them to add one detail or correct one error. Collect no more information than is needed to guide teaching.
+
+Week 2: Revisit one idea from Week 1 and add one newly taught concept. Use a short written response, diagram from memory, or explanation to a partner. Keep the prompt focused enough to complete in a few minutes. Compare responses with the answer key and note concepts that may need reteaching.
+
+Week 3: Add a changed example. Ask learners to apply a familiar idea to a new but related example. Do not assume that success on a repeated prompt proves transfer. If students struggle, distinguish between forgetting a fact, misunderstanding the relationship, and not recognizing that the new example uses the same principle.
+
+Week 4: Review across more than one lesson. Use two or three prompts that span earlier and current content. Vary formats only when the format helps measure the objective. Give corrective feedback and reserve time for students to revise their explanation.
+
+Week 5: Include a cumulative explanation or data interpretation task. Ask learners to connect concepts, justify a prediction, or explain how evidence supports a claim. Provide the necessary context, but do not display the answer before the retrieval attempt. If the task is unusually demanding, scaffold it and record the support offered.
+
+Week 6: Use a final low-stakes retrieval activity and gather learner and teacher feedback. A classroom activity is not a research result by itself. If a school plans to evaluate outcomes, use an approved protocol, a suitable comparison, and a delayed measure. Decide whether to continue, adapt, or stop based on both learning evidence and implementation concerns.
+
+Lesson routines
+
+The three-minute opening routine can begin with one question about a previously taught idea. Students answer individually for about a minute, then compare their response with an example answer. The teacher identifies one point that needs a brief explanation. The routine should not be so rushed that learners with accommodations cannot participate.
+
+The exit routine can ask students to explain one connection between today's lesson and an earlier one. Students can write, draw, or label a process, depending on the objective. The teacher can review a small sample of responses or use a simple class-level tally. A tally should not become a high-stakes measure or a public leaderboard.
+
+The paired explanation routine gives each learner a quiet retrieval attempt before discussion. Partner talk can help learners notice missing steps, but one student's answer should not replace the other's attempt. After the conversation, each learner writes or states one revised idea in their own way.
+
+The diagram-from-memory routine can be useful for cycles, systems, and processes. Students first draw without viewing notes, then compare with a model. The teacher should state which relationships or labels matter most. Neatness should not be scored unless it is part of the learning objective.
+
+The data-interpretation routine can ask students to recall what a graph feature means, identify a pattern, and explain a possible mechanism. Do not imply causation from a descriptive graph alone. Make sure the axes, units, and context are clear, and give students enough time to interpret them.
+
+Feedback and correction
+
+Feedback should arrive soon enough to correct a misconception before it is practiced again. A concise answer key can name the expected concept, show the reasoning step, and give one example of an acceptable response. If the question reveals a widespread misunderstanding, pause the sequence and reteach before moving to another prompt.
+
+Teachers can use a three-part response: identify what is accurate, point to the missing or incorrect step, and invite a revision. For example: "You correctly identified the predator. Add how a change in prey numbers could affect the next level of the food web." This keeps the focus on the explanation rather than on the learner's ability or effort.
+
+Do not expose individual errors to the class without the student's agreement. Use anonymous examples only when they are genuinely anonymous and cannot be linked back to a learner through handwriting or context. Avoid sarcasm, public correction rituals, or language that presents a temporary gap as a fixed trait.
+
+If students have different correct routes to an answer, show the range. If an answer key is later found to be ambiguous or incorrect, acknowledge the issue, correct the key, and let students update their understanding. The teacher's willingness to repair a mistake supports accurate learning and trust.
+
+Inclusion and student well-being
+
+Before starting, identify the adjustments already required by school policy or a learner's plan. Provide assistive technology, extra time, oral response, large print, or a quieter setting when those accommodations are appropriate. A change in format should preserve the target knowledge while removing a barrier unrelated to that knowledge.
+
+Use language that explains the learning purpose. Some learners may experience quiz-like tasks as stressful even when the teacher calls them low stakes. Offer predictable routines, private responses, and opportunities to ask for clarification. Watch for avoidance, distress, or disproportionate participation gaps and respond supportively.
+
+Avoid interpreting a blank response as proof that a learner did not study or does not understand. The response may reflect absence, language demands, access barriers, fatigue, uncertainty about instructions, or a mismatch between the prompt and prior teaching. Ask what happened before drawing conclusions.
+
+Monitoring and adaptation
+
+Use a short implementation record. Note the date, target concept, prompt, minutes used, format, feedback provided, accommodations offered, and any unplanned change. Record class-level implementation details rather than unnecessary personal information. If individual scores are not needed, do not collect them.
+
+Review more than accuracy. Consider whether learners could complete the prompt, whether the correction was clear, whether the activity displaced important instruction, and whether students viewed the routine as fair. A successful routine should be feasible and respectful as well as educationally useful.
+
+If many students miss the same question, first check whether the concept was taught, the wording was clear, and the answer key matched the lesson. A shared error may indicate a teaching or item-design problem. Do not assume that more retrieval alone will solve every gap.
+
+Change one manageable feature at a time. If the prompt is too long, shorten it. If the interval is too brief, space the review. If students confuse two concepts, teach their distinction and use a comparison prompt. Keep a note of what changed so that later judgments do not mix different versions of the routine.
+
+End-of-unit reflection
+
+At the end of the unit, the teacher team should review the implementation record and identify what was workable, what was difficult, and what should change. Compare the routine with the unit objectives and available student work. Any outcome claim should be proportionate to the data collected. Classroom impressions can inform planning but do not prove that the routine caused a change in learning.
+
+Ask learners whether the prompts were understandable, whether feedback helped them identify a next step, and whether any format created an access barrier. Provide a way to raise concerns privately. Summarize feedback without attaching names unless there is a clear and approved reason to do so.
+
+The team can end with one of three decisions: continue the small routine, adapt one feature and try again, or pause it. Record the reason for the decision and the uncertainty that remains. A decision to stop is a valid outcome when the routine takes too much time, increases distress, or does not fit the learning goal.
+
+This guide is a prepared demonstration document. It summarizes practical planning considerations but is not a school-approved intervention manual. A real implementation should follow local curriculum, accessibility, safeguarding, research-review, and data-protection requirements.

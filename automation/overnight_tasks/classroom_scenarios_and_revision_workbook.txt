@@ -1,0 +1,145 @@
+ZTSS CORE Demonstration Task: Classroom Scenarios and Revision Workbook
+
+Prepared local task material for a desktop automation endurance demonstration. These scenarios are hypothetical practice materials. They are not lesson observations, student responses, or evidence about any real school.
+
+Workbook purpose
+
+This workbook gives a teacher team practice in planning, checking, and revising retrieval prompts for a secondary science unit. Each scenario asks the team to identify the learning objective, decide whether retrieval is appropriate, plan feedback, and check access. The examples do not prescribe a single correct classroom routine. They are discussion exercises that can be adapted to the curriculum and the learners who will use them.
+
+Use a consistent review sequence. First, state what students have already been taught. Second, name the idea students should retrieve. Third, check that the prompt requires an attempt from memory. Fourth, prepare an accurate response or model. Fifth, decide how students can revise. Finally, record any access or well-being concern and the next teaching action.
+
+Do not use these scenarios to infer an individual learner's ability. A response can be affected by prior teaching, time, wording, language, accommodations, attendance, and many other factors. A teacher should interpret patterns carefully and ask what support is needed before drawing a conclusion.
+
+Scenario card 1: Energy transfer in a food web
+
+Context: Students have studied producers, consumers, and arrows in a simple food chain. They have drawn one example with the teacher and discussed where energy moves. The next lesson begins with a short retrieval prompt.
+
+Prompt: Without looking at notes, draw a three-step food chain and add arrows to show the direction of energy transfer. Then write one sentence explaining what an arrow means.
+
+Planning questions: Does the class already know what each organism represents? Is the number of steps appropriate? Would a student be able to use labels instead of writing a full sentence if language is not the target? Could the prompt accidentally imply that energy moves from a consumer back to the organism it eats?
+
+Possible model: Arrows point from the organism that is eaten toward the organism that obtains energy by eating it. A valid chain should include a producer and consumers in a biologically plausible sequence. The teacher should align the examples with the curriculum and avoid treating the model as a complete description of every food-web relationship.
+
+Feedback plan: Display one anonymous model and explain an arrow. Invite learners to compare their diagram and revise one part. If many arrows point in the wrong direction, pause for a short reteaching explanation and use a second example before moving on.
+
+Access check: Provide a larger drawing space, allow a spoken explanation, or offer extra time where required. Avoid scoring handwriting or diagram neatness if the learning objective is energy direction.
+
+Scenario card 2: Explaining a change in population
+
+Context: Students have learned that populations in an ecosystem can influence one another. They have discussed that a population change can have several possible causes and that an observation alone does not establish causation.
+
+Prompt: A population of insects decreases over several weeks. Name one possible effect on a species that eats those insects and explain one additional piece of evidence that would help distinguish a possible cause from a coincidence.
+
+Planning questions: Have students learned the relevant feeding relationship? Does the prompt invite more than one scientifically reasonable answer? Can students describe uncertainty without being marked wrong for not guessing the teacher's preferred cause? Is the evidence request suited to the unit?
+
+Possible response: A predator that depends on the insects may have less food available, but the effect would depend on other food sources and conditions. Evidence about timing, habitat, weather, or population changes in other species could help evaluate explanations. One observation is not enough to establish a single cause.
+
+Feedback plan: Accept plausible, evidence-based answers. Ask students to distinguish an observed pattern from a proposed mechanism. Show how a new data point can strengthen, weaken, or leave an explanation uncertain.
+
+Access check: Preteach any technical words needed to understand the prompt. If students can demonstrate the target reasoning orally or with a simple causal diagram, consider those formats. Do not use a student's language fluency as a proxy for scientific reasoning unless language is part of the objective.
+
+Scenario card 3: States of matter and particle models
+
+Context: Students have received an explanation of how particle motion and arrangement differ across states of matter. They have examined a model and discussed which features are representations rather than literal pictures.
+
+Prompt: Without notes, describe one way a particle model changes when a solid becomes a liquid. Identify one feature of the model that should not be taken literally.
+
+Planning questions: Does the prompt assess the model rather than only recall of a vocabulary word? Have learners encountered the limits of the representation? Could the language be simplified without giving away the answer? Are students being asked to describe particle behavior at the level taught?
+
+Possible model: In the taught model, particles in a liquid move past one another more freely than particles in a solid, while remaining close together. A drawn circle is a symbol for a particle and is not intended to show the exact size of a molecule or a visible bead.
+
+Feedback plan: Compare one accurate idea and one common oversimplification. Invite learners to revise their explanation by adding how the model represents motion or spacing. If students confuse particle motion with the material's overall movement, clarify the distinction.
+
+Access check: Consider whether a diagram, verbal answer, or sentence frame supports the objective. A sentence frame should help with organization without supplying the scientific conclusion. Provide any required accommodations consistently.
+
+Scenario card 4: Reading a simple science graph
+
+Context: Students have learned to read axes and units and have practiced describing a trend. The class has not yet learned experimental design in depth.
+
+Prompt: A graph shows the measured temperature of water as heating time increases. State the overall pattern and identify one conclusion the graph does not justify by itself.
+
+Planning questions: Are the axes and units visible? Is the graph readable at the students' screen or print size? Does the item ask for a pattern rather than an unsupported cause? Could students answer by reading the scale rather than relying on an assumed relationship?
+
+Possible response: The plotted temperature rises over the displayed interval. The graph alone does not explain every cause of the change, show what happens outside the measured range, or establish that all other conditions were controlled. The expected response should match the actual graph used in the class.
+
+Feedback plan: Ask students to cite a point or interval that supports their description. Distinguish observation from interpretation. If the graph is ambiguous, correct the task rather than marking a reasonable reading as a learner error.
+
+Access check: Use legible labels, sufficient contrast, and clear units. Offer a printed or enlarged version where appropriate. Do not assume that a student who has trouble reading the graph has misunderstood the science concept.
+
+Scenario card 5: Interpreting a classroom response pattern
+
+Context: After a prompt, several students give the same incomplete response. The teacher has only a short time before the next activity.
+
+Decision: The group should determine whether the wording was unclear, the content was not adequately taught, the response time was too short, or a shared misconception needs attention. The pattern does not by itself identify which explanation is correct.
+
+Planning questions: What instruction came before the prompt? Did most students have the same opportunity to participate? Were there accessibility barriers? Did the answer key allow more than one response? Is a brief whole-class clarification more suitable than repeating the same question immediately?
+
+Possible next step: Acknowledge the pattern, explain the relevant concept, and provide a new example after the explanation. Later, ask a different retrieval prompt to see whether students can apply the concept. Do not publicly identify students whose response was incomplete.
+
+Feedback plan: Separate the item review from the learner review. If the question or key was flawed, revise the materials and tell students. If the concept needs more teaching, provide that instruction. Do not increase quiz frequency automatically as a response to every low score.
+
+Scenario card 6: When the routine creates pressure
+
+Context: A learner says that even short quizzes feel stressful and asks whether the response will affect a grade. The teacher intended the activity as low stakes.
+
+Decision: The teacher should restate the purpose plainly, answer the grading question accurately, and consider a private or alternative response format. The learner should be able to raise a concern without being described as unwilling to learn.
+
+Planning questions: Was the low-stakes purpose stated before the activity? Was a mark recorded? Is the routine predictable? Can the teacher offer an accessible alternative without changing the learning objective? Does school policy require a particular accommodation or referral?
+
+Possible response: Explain how the answer will be used, whether it affects grades, and who can see it. If the activity was described inaccurately, correct that description. Follow school support procedures if a learner reports continuing distress.
+
+Feedback plan: Feedback should focus on the science idea and a next step. Avoid using public scores or comparison with classmates. Review the routine with the class if several students express the same concern.
+
+Access check: Ask what would help without pressuring the learner to disclose private information in front of peers. Use existing support plans and contact the appropriate school staff when needed.
+
+Revision workshop
+
+The workshop can be used after a teacher or peer reviewer flags a prompt. Begin by copying the original prompt and naming the learning objective. Do not rewrite the item until the team can explain what it is meant to measure.
+
+Revision 1: Remove unnecessary complexity. Replace a long multi-part question with one clear instruction at a time. Keep essential scientific language when it is part of the objective, but define background context that is not being assessed.
+
+Revision 2: Align format and objective. If the objective is explanation, ask for a causal link rather than only a label. If the objective is diagram interpretation, provide a readable diagram and ask students to interpret one relationship. Keep a short recall item when recall itself is relevant.
+
+Revision 3: Check the answer key. Write a model answer and at least one acceptable alternative. Identify the key concept and reasoning step. Note an answer that is incomplete but not wholly wrong. State what feedback will help a student improve it.
+
+Revision 4: Check access. Review reading load, font size, response options, time, and assistive supports. Ask whether the prompt measures the target knowledge or an unrelated barrier. Confirm that the activity does not reveal private information or invite public comparison.
+
+Revision 5: Plan the revisit. Identify when an idea will return, in what format, and how it differs from the first prompt. A later prompt should use the same central concept but should not simply test memorization of one exact sentence.
+
+Revision record
+
+Original prompt: __________________________________________________________
+
+Learning objective: _______________________________________________________
+
+Concern identified: _______________________________________________________
+
+Revised prompt: ___________________________________________________________
+
+Model answer or key idea: __________________________________________________
+
+Feedback and correction: ___________________________________________________
+
+Access options: ____________________________________________________________
+
+Planned revisit: ____________________
+
+Reason for revision: _______________________________________________________
+
+Person reviewing alignment: ____________________ Date: ____________________
+
+Reflection record
+
+After an activity, the teacher can complete a short reflection. Which concept did students retrieve? What part of the prompt was clear? What part caused confusion? Did the feedback help learners improve an answer? Was the activity accessible and low stakes? What will the teacher change next time?
+
+The reflection should distinguish observation from interpretation. "Eight students left the last item blank" is an observation if it was recorded accurately. "The students were not prepared" is an interpretation that may need additional evidence. Attendance, timing, item wording, access, and prior instruction can all affect a response pattern.
+
+Do not include personal names in a general reflection. If a specific learner needs support, follow the school's normal confidential process. Do not place identifiable information in an automation log or a file that is not approved for student records.
+
+Facilitator closing note
+
+The purpose of these scenarios is to practice careful decisions, not to prove that a routine works. A good prompt depends on teaching, timing, feedback, and access. A low score should trigger a thoughtful check of the task and instruction rather than an automatic judgment about the student. A successful routine should support learning while protecting dignity and instructional time.
+
+For any future evaluation, keep the sequence clear: define the question, secure required approvals, describe what happens, choose outcomes in advance, protect data, analyze according to the plan, and report limitations. If a value is hypothetical, label it as hypothetical wherever it appears. If data are observed, report exactly what was measured and avoid claims beyond the design.
+
+This workbook contains prepared scenarios for a local desktop demonstration. It has no real student responses and should be adapted before use in a classroom.
