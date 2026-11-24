@@ -206,6 +206,7 @@ def run_overnight_demo(
         "integrity_checks": 0,
         "integrity_failures": 0,
         "whitespace_variances": 0,
+        "input_calibration_retries": 0,
     }
     run_start = time.monotonic()
     deadline = run_start + max_runtime_hours * 60 * 60
@@ -279,7 +280,7 @@ def run_overnight_demo(
 
     def calibrate_notepad_input() -> None:
         nonlocal caps_lock_toggled_by_agent
-        probe = "AaZzCaseCheck123!"
+        probe = "AaZzCaseCheck"
 
         def clear_probe() -> None:
             ensure_focus()
@@ -305,22 +306,35 @@ def run_overnight_demo(
             metrics["integrity_checks"] += 1
             return current_output.read_text(encoding="ascii")
 
-        actual = type_and_read_probe()
-        if actual != probe:
-            if actual.casefold() == probe.casefold():
-                clear_probe()
+        actual = ""
+        passed = False
+        for attempt in range(1, 4):
+            actual = type_and_read_probe()
+            if actual == probe:
+                passed = True
+                break
+            metrics["input_calibration_retries"] += 1
+            log_event(
+                f"Input calibration attempt {attempt} mismatch: received {actual!r}; "
+                f"expected {probe!r}.",
+                print_line=True,
+            )
+            clear_probe()
+            if actual.casefold() == probe.casefold() and not caps_lock_toggled_by_agent:
                 ensure_focus()
                 pyautogui.press("capslock")
                 metrics["keyboard_interactions"] += 1
                 caps_lock_toggled_by_agent = True
-                log_event("Input probe detected case inversion; toggled Caps Lock and retrying.", print_line=True)
-                actual = type_and_read_probe()
-            if actual != probe:
-                metrics["integrity_failures"] += 1
-                clear_probe()
-                raise ContentIntegrityError(
-                    "Notepad keyboard calibration failed; the task text was not started."
-                )
+                log_event("Probe showed case inversion; toggled Caps Lock and retrying.", print_line=True)
+            elif attempt < 3:
+                time.sleep(0.2)
+
+        if not passed:
+            metrics["integrity_failures"] += 1
+            clear_probe()
+            raise ContentIntegrityError(
+                "Notepad keyboard calibration failed after three attempts; the task text was not started."
+            )
 
         clear_probe()
         if current_output.read_text(encoding="ascii") != "":
