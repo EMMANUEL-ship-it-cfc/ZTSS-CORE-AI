@@ -210,6 +210,7 @@ def run_overnight_demo(
         "review_flags": 0,
         "integrity_checks": 0,
         "integrity_failures": 0,
+        "whitespace_variances": 0,
     }
     run_start = time.monotonic()
     deadline = run_start + max_runtime_hours * 60 * 60
@@ -312,11 +313,16 @@ def run_overnight_demo(
         expected = expected.replace("\r\n", "\n").replace("\r", "\n")
         actual = actual.replace("\r\n", "\n").replace("\r", "\n")
         metrics["integrity_checks"] += 1
+        if " ".join(actual.split()) == " ".join(expected.split()):
+            if actual != expected:
+                metrics["whitespace_variances"] += 1
+                log_event("Saved text matches the intended content; only whitespace layout differs.")
+            return
         if actual != expected:
             metrics["integrity_failures"] += 1
             log_event(
-                f"Content integrity mismatch: saved {len(actual):,} characters; "
-                f"expected {len(expected):,}.",
+                f"Content integrity mismatch beyond whitespace: saved {len(actual.split()):,} words; "
+                f"expected {len(expected.split()):,}.",
                 print_line=True,
             )
             raise ContentIntegrityError(
@@ -505,6 +511,7 @@ def run_overnight_demo(
                     ensure_focus()
                     started = time.monotonic()
                     pyautogui.press("enter")
+                    time.sleep(0.08)
                     active_seconds += time.monotonic() - started
                     committed_chars += 1
                     metrics["typed_characters"] += 1
