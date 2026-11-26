@@ -43,9 +43,36 @@ python main.py
 python main.py --demo
 python main.py --paper-demo
 python main.py --overnight-demo --run-hours 4 --checkpoint-minutes 60
+python main.py --coding-agent --goal "a command-line to-do list with tests"
 ```
 
 The first command prints help without controlling the desktop. `--demo` asks for confirmation before starting the short demo. `--paper-demo` asks for confirmation, opens a new Notepad file, and asks for a second `START` confirmation before typing. `--overnight-demo` asks once for `YES`, then starts the bounded task queue with automatic reviews. Use `--typing-interval` to override the default per-mode typing speed. Activity is recorded locally in `logs/ztss_core.log` and in per-run Markdown logs under `demo_output/`.
+
+## Coding agent
+
+`--coding-agent` is the first model-driven mode. A model writes a small Python program and its unit tests, the agent saves the files, opens them in VS Code, runs the tests, and sends any failures back to the model to fix. It stops when the tests pass, after `--max-steps` rounds (default 10), or after `--max-hours` (default and maximum 3).
+
+### Free local model (default)
+
+1. Install Ollama from ollama.com and let it start.
+2. Download a coding model once: `ollama pull qwen2.5-coder:7b` (about 5 GB, wants roughly 8 GB of RAM). On a low-RAM laptop use `qwen2.5-coder:3b` or `qwen2.5-coder:1.5b` and pass `--model qwen2.5-coder:3b`.
+3. Run `python main.py --coding-agent --goal "a command-line to-do list with tests"`.
+
+Everything stays on your computer and nothing is paid for. Small models make more mistakes than cloud models and can be slow on a CPU, so keep goals small and expect extra rounds.
+
+### Paid cloud model (optional)
+
+```powershell
+python -m pip install anthropic
+$env:ANTHROPIC_API_KEY = "your-key-here"
+python main.py --coding-agent --provider anthropic --goal "..."
+```
+
+Never commit the key.
+
+### Safety and records
+
+By default you review the code in VS Code and type `RUN` before every test run. The generated code runs in a subprocess with a timeout and without secret-looking environment variables, but this is not a sandbox. Use `--auto-run` only for harmless goals. Each run writes `agent_log.jsonl` (every step, result, and model note) and `summary.md` under `demo_output/`.
 
 ## Project layout
 

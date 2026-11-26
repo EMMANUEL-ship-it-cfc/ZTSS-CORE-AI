@@ -20,10 +20,12 @@ import shutil
 import subprocess
 import sys
 import time
+import urllib.error
+import urllib.request
 from datetime import datetime, timedelta
 from pathlib import Path
 
-from config.settings import CODING_AGENT_MODEL
+from config.settings import CODING_AGENT_MODEL, OLLAMA_MODEL
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -39,16 +41,22 @@ MAX_GOAL_CHARS = 500
 FILENAME_PATTERN = re.compile(r"^[A-Za-z][A-Za-z0-9_]{0,40}\.py$")
 STDLIB_NAMES = getattr(sys, "stdlib_module_names", frozenset())
 
-SYSTEM_PROMPT = """You are the coding step of a supervised agent. Reply with ONE JSON \
-object and nothing else (no markdown fences, no commentary outside the JSON):
+SYSTEM_PROMPT = """You are the coding step of a supervised agent. Reply in exactly this \
+format and nothing else:
 
-{"notes": "one or two sentences on what you did or changed",
- "files": {"solution.py": "<full file contents>", "test_solution.py": "<full file contents>"}}
+NOTES: one or two sentences on what you did or changed
+=== FILE: solution.py ===
+<full contents of solution.py>
+=== END FILE ===
+=== FILE: test_solution.py ===
+<full contents of test_solution.py>
+=== END FILE ===
 
 Rules:
+- Put raw code between the markers. No markdown fences, no JSON, no text outside the format.
 - Python 3, standard library only. No network access, no subprocesses, no deleting \
 files, and no reading or writing outside the current directory.
-- First reply: write solution.py and test_solution.py. Use unittest. The tests must \
+- First reply: write solution.py and test_solution.py. Use unittest, and make the tests \
 check real behaviour, including edge cases and error handling.
 - Later replies: you receive the test output. Find the cause and fix it. Return only \
 the files you change, each in full.
@@ -77,32 +85,41 @@ def _truncate(text: str, limit: int = MAX_FEEDBACK_CHARS) -> str:
     return text[:head] + "\n...[output truncated]...\n" + text[-(limit - head):]
 
 
-def _extract_json(reply: str) -> dict:
-    """Pull one JSON object out of a model reply, tolerating stray fences."""
-    text = reply.strip()
-    start, end = text.find("{"), text.rfind("}")
-    if start == -1 or end <= start:
-        raise ValueError("the reply contained no JSON object")
-    try:
-        data = json.loads(text[start : end + 1])
-    except json.JSONDecodeError as error:
-        raise ValueError(f"the JSON could not be parsed ({error.msg})") from error
-    if not isinstance(data, dict):
-        raise ValueError("the JSON must be an object")
-    return data
+FILE_BLOCK = re.compile(
+    r"^=== FILE: (?P<name>[^\n=]+?) ===[ \t]*\n(?P<body>.*?)\n?^=== END FILE ===",
+    re.MULTILINE | re.DOTALL,
+)
+
+
+def _strip_fence(body: str) -> str:
+    """Remove a markdown fence if the model wrapped the code in one anyway."""
+    lines = body.strip("\n").split("\n")
+    if len(lines) >= 2 and lines[0].startswith("```") and lines[-1].strip() == "```":
+        lines = lines[1:-1]
+    return "\n".join(lines) + "\n"
+
+
+def _parse_reply(reply: str) -> tuple[str, dict[str, str]]:
+    """Split a model reply into (notes, {filename: contents})."""
+    files: dict[str, str] = {}
+    for match in FILE_BLOCK.finditer(reply):
+        files[match.group("name").strip()] = _strip_fence(match.group("body"))
+    if not files:
+        raise ValueError(
+            "no '=== FILE: name.py ===' ... '=== END FILE ===' blocks were found"
+        )
+    notes_match = re.search(r"^NOTES:\s*(.+)$", reply, re.MULTILINE)
+    return (notes_match.group(1).strip() if notes_match else ""), files
 
 
 def _validate_files(
-    data: dict, *, first_step: bool, allow_test_edits: bool
+    files: dict[str, str], *, first_step: bool, allow_test_edits: bool
 ) -> tuple[dict[str, str], list[str]]:
     """Return (files safe to write, human-readable rejections).
 
     Only flat, simple ``name.py`` files are accepted, so the model can never
     write outside the workspace or shadow a standard-library module.
     """
-    files = data.get("files")
-    if not isinstance(files, dict) or not files:
-        raise ValueError('"files" must be a non-empty object of filename: contents')
     if len(files) > MAX_FILES_PER_REPLY:
         raise ValueError(f"too many files (limit {MAX_FILES_PER_REPLY})")
 
@@ -156,8 +173,8 @@ def _run_tests(workspace: Path, timeout: float) -> tuple[bool, int | None, str]:
     return passed, result.returncode, output
 
 
-class ModelClient:
-    """Thin wrapper so the loop does not depend on one SDK's details."""
+class AnthropicClient:
+    """Paid cloud model through the Anthropic API."""
 
     def __init__(self, model: str):
         try:
@@ -187,6 +204,56 @@ class ModelClient:
         )
 
 
+class OllamaClient:
+    """Free local model served by Ollama on this computer (no key, no internet)."""
+
+    def __init__(self, model: str):
+        host = os.environ.get("OLLAMA_HOST", "").strip() or "http://localhost:11434"
+        if not host.startswith("http"):
+            host = "http://" + host
+        self.host = host.rstrip("/")
+        self.model = model
+        try:
+            with urllib.request.urlopen(f"{self.host}/api/tags", timeout=10) as response:
+                installed = [m.get("name", "") for m in json.load(response).get("models", [])]
+        except (urllib.error.URLError, OSError, ValueError) as error:
+            raise RuntimeError(
+                f"Could not reach Ollama at {self.host} ({error}). Install it from "
+                "ollama.com, start it, and try again."
+            ) from error
+        if not any(
+            name == model or name == f"{model}:latest" or (":" not in model and name.split(":")[0] == model)
+            for name in installed
+        ):
+            raise RuntimeError(
+                f"The model '{model}' is not downloaded yet. Run: ollama pull {model}"
+            )
+
+    def complete(self, system: str, messages: list[dict]) -> str:
+        payload = {
+            "model": self.model,
+            "messages": [{"role": "system", "content": system}, *messages],
+            "stream": False,
+            "options": {"temperature": 0.2, "num_ctx": 8192},
+        }
+        request = urllib.request.Request(
+            f"{self.host}/api/chat",
+            data=json.dumps(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+        )
+        # Local models on a laptop CPU can take minutes per reply.
+        with urllib.request.urlopen(request, timeout=1200) as response:
+            return json.load(response)["message"]["content"]
+
+
+def _make_client(provider: str, model: str):
+    if provider == "ollama":
+        return OllamaClient(model)
+    if provider == "anthropic":
+        return AnthropicClient(model)
+    raise ValueError(f"unknown provider: {provider}")
+
+
 def _open_in_vscode(logger, workspace: Path, first_file: Path) -> None:
     code = shutil.which("code")
     if not code:
@@ -206,6 +273,7 @@ def run_coding_agent_demo(
     logger,
     *,
     goal: str | None = None,
+    provider: str = "ollama",
     max_hours: float = MAX_HOURS_CEILING,
     max_steps: int = 10,
     model: str | None = None,
@@ -219,9 +287,15 @@ def run_coding_agent_demo(
         raise ValueError(f"max_hours must be above 0 and at most {MAX_HOURS_CEILING:g}")
     if not 1 <= max_steps <= MAX_STEPS_CEILING:
         raise ValueError(f"max_steps must be between 1 and {MAX_STEPS_CEILING}")
-    model = model or os.environ.get("ZTSS_MODEL") or CODING_AGENT_MODEL
+    if provider not in {"ollama", "anthropic"}:
+        raise ValueError("provider must be 'ollama' or 'anthropic'")
+    model = model or (OLLAMA_MODEL if provider == "ollama" else CODING_AGENT_MODEL)
 
     print("ZTSS CORE time-boxed coding agent")
+    print(
+        f"Model: {model} via {provider} "
+        + ("(runs on this computer, free)" if provider == "ollama" else "(cloud API, paid)")
+    )
     print("Loop: model writes code -> files are saved -> tests run -> results go back to the model")
     print(f"Limits: {max_hours:g} hours and {max_steps} steps, whichever comes first")
     print("The generated code runs on this computer in a subprocess with a timeout.")
@@ -245,13 +319,13 @@ def run_coding_agent_demo(
         return 1
 
     try:
-        client = model_client or ModelClient(model)
+        client = model_client or _make_client(provider, model)
     except RuntimeError as error:
         print(error)
         return 1
 
     try:
-        answer = input(f"Goal: {goal}\nModel: {model}\nType YES to start: ").strip().lower()
+        answer = input(f"Goal: {goal}\nType YES to start: ").strip().lower()
     except (EOFError, KeyboardInterrupt):
         answer = "no"
     if answer != "yes":
@@ -296,7 +370,7 @@ def run_coding_agent_demo(
             handle.write(json.dumps(record, ensure_ascii=False) + "\n")
         logger.info("coding agent step=%s event=%s", step, event)
 
-    trace(0, "start", goal=goal, model=model, max_hours=max_hours, max_steps=max_steps)
+    trace(0, "start", goal=goal, provider=provider, model=model, max_hours=max_hours, max_steps=max_steps)
 
     try:
         for step in range(1, max_steps + 1):
@@ -318,9 +392,9 @@ def run_coding_agent_demo(
             messages.append({"role": "assistant", "content": reply})
 
             try:
-                data = _extract_json(reply)
+                notes, parsed = _parse_reply(reply)
                 accepted, rejected = _validate_files(
-                    data, first_step=(step == 1), allow_test_edits=allow_test_edits
+                    parsed, first_step=(step == 1), allow_test_edits=allow_test_edits
                 )
                 if not accepted:
                     raise ValueError("every file in the reply was rejected: " + "; ".join(rejected))
@@ -332,7 +406,7 @@ def run_coding_agent_demo(
                         "role": "user",
                         "content": (
                             f"Your last reply could not be used: {error}. Reply again with "
-                            "one JSON object in the required format."
+                            "the required NOTES and === FILE === block format."
                         ),
                     }
                 )
@@ -340,7 +414,7 @@ def run_coding_agent_demo(
 
             for name, content in accepted.items():
                 (workspace / name).write_text(content, encoding="utf-8", newline="\n")
-            notes = str(data.get("notes", ""))[:500]
+            notes = notes[:500]
             print(f"Model notes: {notes}")
             print(f"Wrote: {', '.join(sorted(accepted))}")
             for item in rejected:
@@ -398,7 +472,7 @@ def run_coding_agent_demo(
     summary_file.write_text(
         "# Coding agent run\n\n"
         f"- Goal: {goal}\n"
-        f"- Model: {model}\n"
+        f"- Model: {model} ({provider})\n"
         f"- Result: {stop_reason}\n"
         f"- Tests passing: {'yes' if passed else 'no'}\n"
         f"- Steps used: {steps_run} of {max_steps}\n"

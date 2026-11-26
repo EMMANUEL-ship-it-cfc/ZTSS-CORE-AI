@@ -9,6 +9,7 @@ import math
 import os
 import sys
 
+from automation.coding_agent_demo import run_coding_agent_demo
 from automation.notepad_demo import run_notepad_demo
 from automation.notepad_paper_demo import run_notepad_paper_demo
 from automation.overnight_demo import run_overnight_demo
@@ -60,6 +61,50 @@ def build_parser():
         default=None,
         help="override the mode's default seconds between typed characters",
     )
+    parser.add_argument(
+        "--coding-agent",
+        action="store_true",
+        help="let a model write, test, and fix a small program (free local model by default)",
+    )
+    parser.add_argument(
+        "--provider",
+        choices=("ollama", "anthropic"),
+        default="ollama",
+        help="model source for --coding-agent: free local Ollama (default) or paid Anthropic API",
+    )
+    parser.add_argument(
+        "--model",
+        default=None,
+        help="model name for --coding-agent (default depends on --provider)",
+    )
+    parser.add_argument("--goal", default=None, help="what the coding agent should build")
+    parser.add_argument(
+        "--max-hours",
+        type=float,
+        default=3.0,
+        help="maximum wall-clock runtime for --coding-agent (default and ceiling: 3 hours)",
+    )
+    parser.add_argument(
+        "--max-steps",
+        type=int,
+        default=10,
+        help="maximum model rounds for --coding-agent (default: 10, ceiling: 30)",
+    )
+    parser.add_argument(
+        "--auto-run",
+        action="store_true",
+        help="run tests without asking first (the code is not sandboxed; use with care)",
+    )
+    parser.add_argument(
+        "--no-editor",
+        action="store_true",
+        help="do not open the generated code in VS Code",
+    )
+    parser.add_argument(
+        "--allow-test-edits",
+        action="store_true",
+        help="let the model change its test files after the first step",
+    )
     parser.add_argument("--version", action="version", version=f"{APP_NAME} {VERSION}")
     return parser
 
@@ -68,10 +113,33 @@ def main():
     parser = build_parser()
     args = parser.parse_args()
 
-    if not args.demo and not args.paper_demo and not args.overnight_demo:
+    if not (args.demo or args.paper_demo or args.overnight_demo or args.coding_agent):
         parser.print_help()
-        print("\nNo desktop actions run unless you pass --demo, --paper-demo, or --overnight-demo.")
+        print(
+            "\nNothing runs unless you pass --demo, --paper-demo, --overnight-demo, "
+            "or --coding-agent."
+        )
         return 0
+
+    if args.coding_agent:
+        # The coding agent needs neither PyAutoGUI nor Windows: it writes files and runs tests.
+        if not math.isfinite(args.max_hours) or not 0 < args.max_hours <= 3.0:
+            parser.error("--max-hours must be above 0 and at most 3")
+        if not 1 <= args.max_steps <= 30:
+            parser.error("--max-steps must be between 1 and 30")
+        logger = configure_activity_log()
+        logger.info("ZTSS CORE %s started the coding agent.", VERSION)
+        return run_coding_agent_demo(
+            logger,
+            goal=args.goal,
+            provider=args.provider,
+            model=args.model,
+            max_hours=args.max_hours,
+            max_steps=args.max_steps,
+            auto_run=args.auto_run,
+            open_editor=not args.no_editor,
+            allow_test_edits=args.allow_test_edits,
+        )
 
     if os.name != "nt":
         print("The v0.1 Notepad demo is currently for Windows.", file=sys.stderr)

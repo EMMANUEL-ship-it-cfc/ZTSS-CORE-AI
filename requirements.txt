@@ -1,2 +1,6 @@
 # Free and open-source desktop control dependency for the v0.1 prototype.
 pyautogui
+
+# Optional: only needed for the paid cloud model (--coding-agent --provider anthropic).
+# The default free local model (Ollama) needs no extra Python packages.
+# anthropic
